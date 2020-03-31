@@ -4,8 +4,23 @@ import { graphql } from 'react-apollo';
 import { Link } from 'react-router';
 
 import fetchSongsQuery from '../queries/fetchSongs';
+import deleteSongsMutation from "../mutations/deleteSongs";
+
 
 class SongList extends Component {
+
+    onSongDelete(id) {
+        this.props.mutate({
+            variables: {
+                id
+            }
+        })
+            .then(() => this.props.data.refetch())
+        // refetch will update the UI as although mutation
+        // happens in DB it doesn't reflect right away, we need to refresh without it
+        // we are using this.props.data.refetch() because we are refreshing data in this SongList component
+    }
+
     render() {
         const { data } = this.props;
         console.log(data);
@@ -17,6 +32,11 @@ class SongList extends Component {
                         {data.songs.map(song =>
                             <li key={song.id} className="collection-item">
                                 {song.title}
+                                <i className="material-icons"
+                                    onClick={() => this.onSongDelete(song.id)}
+                                >
+                                    delete
+                                </i>
                             </li>)}
                     </ul>
                 }
@@ -28,4 +48,7 @@ class SongList extends Component {
     }
 }
 
-export default graphql(fetchSongsQuery)(SongList);
+export default graphql(deleteSongsMutation)(
+    graphql(fetchSongsQuery)(SongList)
+);
+

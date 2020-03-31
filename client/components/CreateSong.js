@@ -22,6 +22,9 @@ class CreateSong extends Component {
             variables: {
                 title: this.state.title
             },
+            // refetchQueries will update the UI as although mutation
+            // happens in DB it doesn't reflect right away, we need to refresh without it
+            // we are using refetchQueries because we are refreshing query in SongList component and CreateSong does not know about it
             refetchQueries: [{ query: fetchSongsQuery }]
         }).then(() => hashHistory.push('/'))
             .catch((err) => console.log(err))
