@@ -1,0 +1,21 @@
+.collection {
+  border: 0 solid silver;
+  border-width: 0 0 1px 1px;
+}
+
+.collection-item {
+  display: flex;
+  justify-content: space-between;
+  border: 0 solid silver;
+  border-width: 1px 1px 0 0;
+  padding: 0.5em;
+  padding: 10px;
+}
+
+.material-icons {
+  cursor: pointer;
+}
+
+.right {
+  float: right;
+}

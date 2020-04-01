@@ -35,7 +35,7 @@ class CreateSong extends Component {
         return (
             <div>
                 <Link to="/">Back</Link>
-                <h3>Create a New Song</h3>
+                <h2>Create a New Song</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor="enter-new-song">Song Title: </label>
                     <input
