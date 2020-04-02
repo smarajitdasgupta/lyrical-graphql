@@ -34,22 +34,25 @@ class LyricsListForSong extends Component {
 
     render() {
         const { lyrics } = this.props;
+
         return <div>
             <h4>Lyrics</h4>
             <ul className="collection">
-                {lyrics.map((lyric) =>
-                    <li className="collection-item" key={lyric.id}>
-                        {lyric.content}
+                {[...lyrics]
+                    .sort((a, b) => b.likes - a.likes)
+                    .map((lyric) =>
+                        <li className="collection-item" key={lyric.id}>
+                            {lyric.content}
 
-                        <div className="vote-box">
-                            <i className="material-icons"
-                                onClick={() => this.onLyricUpvote(lyric.id, lyric.likes)}
-                            >
-                                thumb_up
+                            <div className="vote-box">
+                                <i className="material-icons"
+                                    onClick={() => this.onLyricUpvote(lyric.id, lyric.likes)}
+                                >
+                                    thumb_up
                             </i>
-                            {lyric.likes}
-                        </div>
-                    </li>)}
+                                {lyric.likes}
+                            </div>
+                        </li>)}
             </ul>
         </div>
     }
