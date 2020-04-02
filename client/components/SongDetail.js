@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 
 import fetchSong from '../queries/fetchSong';
 import CreateLyric from '../components/CreateLyric';
+import LyricsListForSong from '../components/LyricsListForSong'
 
 const SongDetail = (props) => {
     console.log(props.data)
@@ -16,7 +17,9 @@ const SongDetail = (props) => {
     return <div>
         <Link to="/">Back</Link>
         <h3>{song.title}</h3>
-        <CreateLyric></CreateLyric>
+        <LyricsListForSong lyrics={song.lyrics}></LyricsListForSong>
+        <CreateLyric songId={song.id}></CreateLyric>
+
     </div>
 }
 
