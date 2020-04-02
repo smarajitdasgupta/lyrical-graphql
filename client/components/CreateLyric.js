@@ -19,7 +19,9 @@ class CreateLyric extends Component {
                 content: this.state.content,
                 songId: this.props.songId
             },
-            //   refetchQueries: [{ query: fetchSongQuery, variables: { id: this.props.songId } }]
+
+            // not needed as dataIdFromObject in index.js takes care of the refetch
+            //  refetchQueries: [{ query: fetchSongQuery, variables: { id: this.props.songId } }]
         }).then(() => this.setState({ content: '' }))
             .catch(err => console.log(err));
     }
