@@ -12,13 +12,18 @@ import CreateSong from './components/CreateSong';
 import SongDetail from './components/SongDetail'
 
 const client = new ApolloClient({
-  // takes every piece of data fetched by Apollo client
+  // dataIdFromObject is a caching system
+  // it takes every piece of data fetched by Apollo client
   // from backend and runs through this function
   // what is returned from this function is used to identify
   // that piece of data inside Apollo store
   // What this is doing is telling Apollo to use id to identify every piece of data
   // and keep track of it and tell React whenever something is updated
-  // this only works when all id's are unique and available for all pieces of data
+  // this only works if your database has unique IDs across all types of objects
+  // the Ids are available in every query or mutation for all pieces of data.
+  // React re-renders in case something changes.
+  // https://www.apollographql.com/docs/angular/features/cache-updates/
+
   dataIdFromObject: o => o.id
 });
 

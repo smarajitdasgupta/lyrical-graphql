@@ -14,8 +14,14 @@
 
 .material-icons {
   cursor: pointer;
+  margin-right: 5px;
 }
 
 .right {
   float: right;
+}
+
+.vote-box {
+  display: flex;
+  align-items: center;
 }

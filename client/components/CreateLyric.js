@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import gql from 'graphql-tag';
 
 import { graphql } from 'react-apollo';
 import fetchSongQuery from '../queries/fetchSong';
+import createLyricMutation from "../mutations/createLyric";
 
 
 class CreateLyric extends Component {
@@ -19,7 +19,7 @@ class CreateLyric extends Component {
                 content: this.state.content,
                 songId: this.props.songId
             },
-            refetchQueries: [{ query: fetchSongQuery, variables: { id: this.props.songId } }]
+            //   refetchQueries: [{ query: fetchSongQuery, variables: { id: this.props.songId } }]
         }).then(() => this.setState({ content: '' }))
             .catch(err => console.log(err));
     }
@@ -38,15 +38,4 @@ class CreateLyric extends Component {
     }
 }
 
-const mutation = gql`
-        mutation AddLyricToSong($content: String, $songId: ID) {
-	        addLyricToSong(content: $content, songId: $songId){
-                id
-                lyrics {
-                    content
-                }
-            }
-        }
-    `;
-
-export default graphql(mutation)(CreateLyric);
+export default graphql(createLyricMutation)(CreateLyric);
