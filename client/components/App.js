@@ -2,7 +2,7 @@ import React from 'react';
 
 export default ({ children }) => {
     return (
-        <div className="container">
+        <div>
             <h1>Lyrical</h1>
             {children}
         </div>
