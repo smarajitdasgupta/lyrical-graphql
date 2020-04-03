@@ -7,7 +7,7 @@ Also a page to create a song
 
 ### Uses
 
-- GraphQL
+- GraphQL - Apollo on client, GraphQL-Express on server
 - Express
 - MongoDB @ MongoLab
 - Webpack
